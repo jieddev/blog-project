@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # get "blog_posts/new", to: "blog_posts#new", as: new_blog_post
+
   root "blog_posts#index"
   resources :blog_posts
 end
