@@ -1,6 +1,12 @@
 <h1>Create a Blog Post</h1>
 
 <%= form_with model: @blog_post do |f| %>
+  <% if f.object.errors.any? %>
+    <% f.object.errors.full_messages.each do |error_message|%>
+      <%= error_message%>
+    <%end%>
+  <%end%>
+
   <div>
     <%= f.label :title %>
     <%= f.text_field :title %>
