@@ -1,7 +1,7 @@
 <h1>Blogs</h1>
 
 <% @blog_posts.each do |blog_post| %>
-  <h3><%= blog_post.title %></h3>
+  <h3><%= link_to blog_post.title, "/blog_posts/#{blog_post.id}" %></h3>
   <%= blog_post.body %> <br>
 
 <%end%>
