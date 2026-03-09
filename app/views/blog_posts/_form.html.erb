@@ -1,0 +1,20 @@
+<%= form_with model: @blog_post do |f| %>
+  <% if f.object.errors.any? %>
+    <% f.object.errors.full_messages.each do |error_message|%>
+      <%= error_message%>
+    <%end%>
+  <%end%>
+
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <%= f.submit 'Submit', disable_with: 'Submiting...' %>
+
+<%end%>
