@@ -23,25 +23,24 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="prose">
+  <body class="text-2xl underline ">
     
-    <%# <% flash.each do |type, message |%>
-      <%# <%= message %>
-    <%# <%end%> 
+      <%# <% flash.each do |type, message |%>
+        <%# <%= message %>
+      <%# <%end%> 
 
-    <div>
-      <%if user_signed_in? %>
-        <%= link_to "Your Profile", edit_user_registration_path%>
-        <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+      <div class="text-gray-500 dark:text-gray-400 mxz-ce prose">
+        <%if user_signed_in? %>
+          <%= link_to "Your Profile", edit_user_registration_path%>
+          <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+        
+        <%end%>
+      </div>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       
-      <%end%>
-    </div>
+      <%= yield %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
-    <%= yield %>
-
-  
   </body>
 </html>
