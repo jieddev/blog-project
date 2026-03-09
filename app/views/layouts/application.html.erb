@@ -23,7 +23,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="prose">
     
     <%# <% flash.each do |type, message |%>
       <%# <%= message %>
@@ -33,6 +33,7 @@
       <%if user_signed_in? %>
         <%= link_to "Your Profile", edit_user_registration_path%>
         <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+      
       <%end%>
     </div>
 
