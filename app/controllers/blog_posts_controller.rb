@@ -33,6 +33,7 @@ class BlogPostsController < ApplicationController
 
     if @blog_post.update(blog_post_params)
       redirect_to @blog_post, notice: "Blog Post update successfully"
+      # flash[:sucess] = "Update successfully"
     else 
       render :edit, status: :unprocessable_entity
     end
