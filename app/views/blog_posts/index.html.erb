@@ -1,15 +1,14 @@
-<h1 class="text-4xl font-bold text-amber-300 border-4 border-amber-300 p-2">Blogs</h1>
-
-<%= link_to "Create a new post", new_blog_post_path, class: "underline" %>
-
-<br>
+<%# <div class="bg-black flex flex-col justify-center"> %>
+<div class="width-max post-form-wrap"> 
+  <h1 class="text-4xl font-bold text-amber-300 border-4 border-amber-300">Blogs</h1>
 
 
-<% @blog_posts.each do |blog_post| %>
-  <br> 
-
-  <h3><%= link_to blog_post.title, blog_post , class: "font-bold underline"%></h3>
-  <%= blog_post.body %> <br>
-
-  <br>
-<%end%>
+  <div class="pb-4" >
+    <%= link_to "Create a new post", new_blog_post_path, class: "underline" %>
+  </div>
+  
+  <% @blog_posts.each do |blog_post| %>
+    <h3><%= link_to blog_post.title, blog_post , class: "underline"%></h3>
+    <%= blog_post.body %> <br>
+  <%end%>
+</div>
