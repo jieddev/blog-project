@@ -32,7 +32,7 @@ class BlogPostsController < ApplicationController
     @blog_post = BlogPost.find(params[:id])
 
     if @blog_post.update(blog_post_params)
-      redirect_to @blog_post, notice: "Post update successfully"
+      redirect_to @blog_post, notice: "Blog Post update successfully"
     else 
       render :edit, status: :unprocessable_entity
     end
