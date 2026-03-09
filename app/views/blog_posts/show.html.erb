@@ -1,2 +1,7 @@
-<h3><%= @blog_post.title %></h3>
-<%= @blog_post.body %>
+<div>
+  <h3><%= @blog_post.title %></h3>
+  <%= @blog_post.body %>
+</div>
+
+
+<%= link_to "Back to posts", blog_posts_path%>
