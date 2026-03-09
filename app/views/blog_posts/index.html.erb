@@ -1,9 +1,15 @@
-<h1 class="text-3xl font-bold underline">Blogs</h1>
+<h1 class="text-4xl font-bold text-amber-300 ">Blogs</h1>
 
-<%= link_to "Create a new post", new_blog_post_path %>
+<%= link_to "Create a new post", new_blog_post_path, class: "underline" %>
+
+<br>
+
 
 <% @blog_posts.each do |blog_post| %>
-  <h3><%= link_to blog_post.title, blog_post %></h3>
+  <br> 
+
+  <h3><%= link_to blog_post.title, blog_post , class: "font-bold underline"%></h3>
   <%= blog_post.body %> <br>
 
+  <br>
 <%end%>

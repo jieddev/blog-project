@@ -1,0 +1,22 @@
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Blogs</a>
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    
+    </form>
+
+    <div class="d-flex align-items-center gap-2">
+        <%if user_signed_in? %>
+          <%= link_to "Your Profile", edit_user_registration_path, class: "font-bold"%>
+          
+          <%= button_to "Logout",
+              destroy_user_session_path,
+              method: :delete,
+              class: "bg-gray-100 px-4 py-2 rounded hover:bg-gray-200" %>
+        <%end%>
+    </div>
+    
+  </div>
+</nav>
