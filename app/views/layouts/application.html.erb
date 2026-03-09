@@ -29,6 +29,12 @@
       <%# <%= message %>
     <%# <%end%> 
 
+    <div>
+      <%if user_signed_in? %>
+        <%= link_to "Your Profile", edit_user_registration_path%>
+      <%end%>
+    </div>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     
