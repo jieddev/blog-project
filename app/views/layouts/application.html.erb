@@ -27,7 +27,10 @@
     
     <% flash.each do |type, message |%>
       <%= message %>
-    <%end%>
+    <%end%> 
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     
     <%= yield %>
 
