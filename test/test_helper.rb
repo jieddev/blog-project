@@ -11,5 +11,10 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+
+    test "draft? returns true for draft blog post" do 
+      binding.erb
+      BlogPost.new(published_at: nil).draft?
+    end
   end
 end
