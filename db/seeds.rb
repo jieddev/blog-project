@@ -9,6 +9,6 @@
 #   end
 
 
-50.times do |index|
-  BlogPost.create(title: "Rugby Boy Number #{index}", content: "Test blog post", published_at: Time.current)
-end
+# 50.times do |index|
+#   BlogPost.create(title: "Rugby Boy Number #{index}", content: "Test blog post", published_at: Time.current)
+# end

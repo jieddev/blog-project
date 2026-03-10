@@ -1,6 +1,3 @@
-<%# <div class="bg-black flex flex-col justify-center"> %>
-
-
 <div >
     <h1 class="text-4xl font-bold text-amber-300 " >Blogs</h1>
     <%= link_to "Create a new post", new_blog_post_path, class: "underline" %>
@@ -14,7 +11,7 @@
   <%end%>
 
   
-  
-  <%== @pagy.series_nav(:bootstrap) %>
-
+  <% if @pagy.count > @pagy.limit %>
+    <%== @pagy.series_nav(:bootstrap) %>
+  <%end%>
 </div>
