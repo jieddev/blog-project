@@ -1,7 +1,8 @@
-<h1>Edit Post</h1>
+<div class="mx-auto mt-12 w-full max-w-md rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
+  <h1>Edit Post</h1>
 
-<%= render partial: "form", locals: {blog_post: @blog_post} %>
+  <%= render partial: "form", locals: {blog_post: @blog_post} %>
 
 
-<%= button_to "Delete", @blog_post, method: :delete, data: {turbo_confirm: "Are you sure to delete the post? "}%>
-
+  <%= button_to "Delete", @blog_post, method: :delete, data: {turbo_confirm: "Are you sure to delete the post? "}%>
+</div>
