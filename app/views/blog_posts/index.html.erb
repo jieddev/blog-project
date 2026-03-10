@@ -1,14 +1,20 @@
 <%# <div class="bg-black flex flex-col justify-center"> %>
-<div class="width-max post-form-wrap"> 
-  <h1 class="text-4xl font-bold text-amber-300 border-4 border-amber-300">Blogs</h1>
 
 
-  <div class="pb-4" >
+<div >
+    <h1 class="text-4xl font-bold text-amber-300 " >Blogs</h1>
     <%= link_to "Create a new post", new_blog_post_path, class: "underline" %>
   </div>
+
+<div class="width-max post-form-wrap pt-16 mt-16 mb-12"> 
   
   <% @blog_posts.each do |blog_post| %>
-    <h3><%= link_to blog_post.title, blog_post , class: "underline"%></h3>
+    <strong><%= link_to blog_post.title, blog_post , class: "underline"%></strong>
     <%= blog_post.content %> <br>
   <%end%>
+
+  
+  
+  <%== @pagy.series_nav(:bootstrap) %>
+
 </div>

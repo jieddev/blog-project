@@ -6,6 +6,7 @@ class BlogPostsController < ApplicationController
     # @blog_posts = BlogPost.all  
     # @blog_posts = BlogPost.published
     @blog_posts = BlogPost.published.order_by_publish_date
+    @pagy, @blog_posts = pagy(:offset, @blog_posts)
   end
 
   def show 
