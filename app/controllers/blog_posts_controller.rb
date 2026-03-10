@@ -16,6 +16,10 @@ class BlogPostsController < ApplicationController
     end
 
     @pagy, @blog_posts = pagy(:offset, @blog_posts)
+    rescue Pagy::OverflowError
+      # params[:page] = 1
+      # retry
+      redirect_to root_path(page: 1)
   end
 
   def show 
