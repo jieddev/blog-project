@@ -1,6 +1,6 @@
 class BlogPostsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_blog_post, except: [:index, :create, :new]
+  before_action :authenticate_user!, except: [:request_json]
+  before_action :set_blog_post, except: [:index, :create, :new, :request_json]
 
   def index
     # @blog_posts = BlogPost.all  
@@ -58,6 +58,14 @@ class BlogPostsController < ApplicationController
     redirect_to blog_posts_path
   end
   
+  def request_json
+    @blog_posts = BlogPost.published.order_by_publish_date
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @blog_posts}
+    end
+  end
 
   private 
   
@@ -71,6 +79,8 @@ class BlogPostsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       redirect_to blog_posts_path
   end
+
+
 
 
 end

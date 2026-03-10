@@ -72,3 +72,5 @@ gem "devise", "~> 5.0"
 gem "tailwindcss-rails", "~> 4.4"
 
 gem "pagy", "~> 43.3"
+
+gem "httparty", "~> 0.24.2"
