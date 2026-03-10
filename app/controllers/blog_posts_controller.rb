@@ -4,7 +4,8 @@ class BlogPostsController < ApplicationController
 
   def index
     # @blog_posts = BlogPost.all  
-    @blog_posts = BlogPost.published
+    # @blog_posts = BlogPost.published
+    @blog_posts = BlogPost.published.order_by_publish_date
   end
 
   def show 
