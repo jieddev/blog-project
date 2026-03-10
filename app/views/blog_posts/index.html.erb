@@ -9,6 +9,6 @@
   
   <% @blog_posts.each do |blog_post| %>
     <h3><%= link_to blog_post.title, blog_post , class: "underline"%></h3>
-    <%= blog_post.body %> <br>
+    <%= blog_post.content %> <br>
   <%end%>
 </div>
