@@ -6,6 +6,15 @@ class BlogPostsController < ApplicationController
     # @blog_posts = BlogPost.all  
     # @blog_posts = BlogPost.published
     @blog_posts = BlogPost.published.order_by_publish_date
+    
+    if params[:q].present?
+      term = "%#{ActiveRecord::Base.sanitize_sql_like(params[:q].strip)}%"
+      @blog_posts = @blog_posts
+        .left_joins(:rich_text_content)
+        .where("blog_posts.title ILIKE :term OR action_text_rich_texts.body ILIKE :term", term: term)
+        .distinct
+    end
+
     @pagy, @blog_posts = pagy(:offset, @blog_posts)
   end
 

@@ -1,11 +1,17 @@
 <nav class="navbar bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand">Blogs</a>
-    <form class="d-flex" role="search">
+    <div class="navbar-brand font-bold">
+      <%= link_to "Blogs", blog_posts_path, class: "text-decoration-none text-dark"%>
+    </div>
+    <%# <form class="d-flex" role="search">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     
-    </form>
+    </form> %>
+    <%= form_with url: blog_posts_path, class: "d-flex ", role: "search", method: :get do %>
+      <%= text_field_tag :q, params[:q], class: "form-control me-2", placeholder: "Search", aria: {label: "Search"} %>
+      <%= submit_tag 'Search', disable_with: 'Searching...', class: "btn btn-outline-success"%>
+    <%end%>
 
     <div class="d-flex align-items-center gap-2">
         <%if user_signed_in? %>

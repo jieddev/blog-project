@@ -1,17 +1,22 @@
-<div >
-    <h1 class="text-4xl font-bold text-amber-300 " >Blogs</h1>
+<div> 
+  <% if params[:q].present? %>
+    <p>Showing results for: <strong><%= params[:q] %></strong></p>
+  <% end %>
+
+  <div class="mb-10 p-12">
+    <h1 class="text-4xl text-gray-500 font-bold " >BLOGS</h1>
     <%= link_to "Create a new post", new_blog_post_path, class: "underline" %>
   </div>
-
-<div class="width-max post-form-wrap pt-16 mt-16 mb-12"> 
   
-  <% @blog_posts.each do |blog_post| %>
-    <strong><%= link_to blog_post.title, blog_post , class: "underline"%></strong>
-    <%= blog_post.content %> <br>
-  <%end%>
+  <div>
+    <% @blog_posts.each do |blog_post| %>
+      <strong><%= link_to blog_post.title, blog_post , class: "underline"%></strong>
+      <%= blog_post.content %> <br>
+    <%end%>
 
-  
-  <% if @pagy.count > @pagy.limit %>
-    <%== @pagy.series_nav(:bootstrap) %>
-  <%end%>
+    
+    <% if @pagy.count > @pagy.limit %>
+      <%== @pagy.series_nav(:bootstrap) %>
+    <%end%>
+  </div>
 </div>
