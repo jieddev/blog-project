@@ -27,14 +27,12 @@
             <p class="card-text"><%= blog_post.content %> </p>
 
 
-              <div class="border-t border-gray-400 pt-3 flex">
+              <div class="border-t border-gray-400 pt-2 flex">
 
                 <%= turbo_frame_tag "like_button_#{blog_post.id}" do %>
                   <%= render "likes/button", blog_post: blog_post%>
 
                 <%end%>      
-
-                <%= @likes = 0%>
                 
                 <div class="cursor-pointer p-2">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text" viewBox="0 0 16 16">
