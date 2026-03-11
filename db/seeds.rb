@@ -16,3 +16,9 @@
 # 10.times do |index|
 #   BlogPost.create(title: "Sample Blog Post", content: "This is a sample blog post to test pagination", published_at: Time.now )
 # end
+
+
+# 20.times do
+#   BlogPost.where(title: "Sample Blog Post")
+
+# end

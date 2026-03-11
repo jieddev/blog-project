@@ -17,8 +17,6 @@ class BlogPostsController < ApplicationController
 
     @pagy, @blog_posts = pagy(:offset, @blog_posts)
     rescue Pagy::OverflowError
-      # params[:page] = 1
-      # retry
       redirect_to root_path(page: 1)
   end
 
@@ -30,7 +28,7 @@ class BlogPostsController < ApplicationController
   end
   
   def create 
-    @blog_post = BlogPost.new(blog_post_params)
+    @blog_post = current_user.blog_posts.new(blog_post_params)
     if @blog_post.save 
       redirect_to @blog_post
     else 
@@ -74,10 +72,10 @@ class BlogPostsController < ApplicationController
   end
   
   def set_blog_post
-    @blog_post = BlogPost.find(params[:id])
+    @blog_post = current_user.blog_posts.find(params[:id])
     
     rescue ActiveRecord::RecordNotFound
-      redirect_to blog_posts_path
+      redirect_to blog_posts_path, notice: "Unauthorized to view this post"
   end
 
 

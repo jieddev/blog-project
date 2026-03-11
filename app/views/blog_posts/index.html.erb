@@ -15,6 +15,12 @@
           <strong><%= link_to blog_post.title, blog_post , class: "underline"%></strong>
           <%= blog_post.content %> <br>
           <%= blog_post.published_at%> <br>
+
+          <% if blog_post.user_id == current_user.id %>
+            <p>By: <%= current_user.email%></p>
+          <%else %>
+            <p>By: Anonymous</p>
+          <%end%>
         </div>
       <%end%>
 

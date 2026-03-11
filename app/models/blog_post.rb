@@ -1,10 +1,11 @@
 class BlogPost < ApplicationRecord
   has_rich_text :content
 
+  belongs_to :user
   validates :title, presence: true 
   validates :content, presence: true 
 
-  scope :order_by_publish_date, -> { order(published_at: :desc) }
+  scope :order_by_publish_date, -> { order(published_at: :asc) }
   scope :draft, -> { where(published_at: nil) }
   scope :published, -> { where("published_at <= ?", Time.current )}
   scope :scheduled, -> { where("published_at > ?", Time.current )}

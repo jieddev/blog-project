@@ -74,3 +74,5 @@ gem "tailwindcss-rails", "~> 4.4"
 gem "pagy", "~> 43.3"
 
 gem "httparty", "~> 0.24.2"
+
+gem "figaro", "~> 1.3"
