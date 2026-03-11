@@ -1,16 +1,12 @@
 <div class="mb-10 p-12">
   <h1 class="text-4xl text-gray-500 font-bold " >Blog Posts</h1>
   <p>Total Users: <%= @total_users %></p>
-  
+
   <%= link_to "Create a new post", new_blog_post_path, class: "underline" %>
   
 </div>
 
 <div> 
-  <% if params[:q].present? %>
-    <p>Showing results for: <strong><%= params[:q] %></strong></p>
-  <% end %>
-
   
   <div>
       <% @blog_posts.each do |blog_post| %>
@@ -18,7 +14,7 @@
         <div class="card mb-10" style="width: 40rem;">
           <%# <img src="..." class="card-img-top" alt="..."> %>
           <div class="card-body">
-            <h5 class="card-title "><strong><%= link_to blog_post.title, blog_post , class: "no-underline"%></strong></h5>
+            <h5 class="card-title "><strong><%= link_to blog_post.title, blog_post , class: "text-decoration-none"%></strong></h5>
             <p class="card-text"><%= blog_post.content %> </p>
             <p class="card-text"><%= blog_post.published_at%></p>
 

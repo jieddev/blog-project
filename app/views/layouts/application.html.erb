@@ -34,7 +34,12 @@
 
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
+
+      <% if params[:q].present? %>
+        <p>Showing results for: <strong><%= params[:q] %></strong></p>
+      <% end %>
       
+    
 
       <div class="flex justify-center width-max ">
         <%= yield %>
