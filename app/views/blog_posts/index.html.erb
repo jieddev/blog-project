@@ -1,6 +1,7 @@
 <div class="mb-10 p-12">
   <h1 class="text-4xl text-gray-500 font-bold " >FaceBlogs</h1>
   <p>Total Users: <%= @total_users %></p>
+  <p>Total Posts: <%= BlogPost.count %></p>
 
   <%= link_to "Create a new post", new_blog_post_path, class: "underline" %>
   
@@ -35,6 +36,8 @@
                 <%end%>      
                 
                 <%= render "comments/button"%>
+
+
 
               </div>
 
