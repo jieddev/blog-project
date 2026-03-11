@@ -17,7 +17,10 @@ Rails.application.routes.draw do
   # get "blog_posts/new", to: "blog_posts#new", as: new_blog_post
 
   root "blog_posts#index"
-  resources :blog_posts 
+  resources :blog_posts do 
+    resource :like, only: [:create, :destroy]
+  end
+
   resources :users
   get "api/blog_posts", to: "blog_posts#request_json", defaults: {format: :json}
 end

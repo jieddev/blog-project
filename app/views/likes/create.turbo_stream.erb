@@ -1,0 +1,4 @@
+<%= turbo_stream.replace "like_button_#{@blog_post.id}" do %>
+  <%= render "likes/button", blog_post: @blog_post %>
+
+<%end%>
