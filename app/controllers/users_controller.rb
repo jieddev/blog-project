@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def show 
     @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to blog_posts_path, notice: "No User Found"
   end
 
 
