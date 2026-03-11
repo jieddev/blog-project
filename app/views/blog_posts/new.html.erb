@@ -2,4 +2,6 @@
 <div class="width-max post-form-wrap">
   <h1>Create a Post</h1>
   <%= render partial: "form", locals: { blog_post: @blog_post } %>
+
+  <%= link_to "Back to posts", blog_posts_path, onclick: "return confirm('Are you sure to go back without creating post?')"%>
 </div>

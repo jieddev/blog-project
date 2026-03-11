@@ -15,7 +15,7 @@ class BlogPostsController < ApplicationController
         .distinct
     end
 
-    @pagy, @blog_posts = pagy(:offset, @blog_posts)
+    @pagy, @blog_posts = pagy(:offset, @blog_posts, limit: 10)
     rescue Pagy::OverflowError
       redirect_to root_path(page: 1)
   end
@@ -77,6 +77,11 @@ class BlogPostsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       redirect_to blog_posts_path, notice: "Unauthorized to view this post"
   end
+
+  def set_total_user
+    @total_users = User.count
+  end
+
 
 
 
