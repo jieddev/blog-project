@@ -66,6 +66,11 @@ class BlogPostsController < ApplicationController
     end
   end
 
+  def toggle_like
+    
+  end
+
+
   private 
   
   def blog_post_params 
