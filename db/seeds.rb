@@ -22,3 +22,16 @@
 #   BlogPost.where(title: "Sample Blog Post")
 
 # end
+
+
+user = User.find_by(email: "rjiedel@gmail.com")
+
+50.times do |index|
+  BlogPost.create(
+    title: "Rugby Boy",
+    content: "parasuyop",
+    published_at: Time.now,
+    user: user
+  )
+
+end

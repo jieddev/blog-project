@@ -66,10 +66,6 @@ class BlogPostsController < ApplicationController
     end
   end
 
-  def toggle_like
-    
-  end
-
 
   private 
   
