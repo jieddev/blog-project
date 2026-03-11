@@ -1,6 +1,7 @@
 class BlogPostsController < ApplicationController
   before_action :authenticate_user!, except: [:request_json]
   before_action :set_blog_post, except: [:index, :create, :new, :request_json]
+  before_action :set_total_user
 
   def index
     # @blog_posts = BlogPost.all  
