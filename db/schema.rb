@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_11_060332) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_11_073530) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -60,6 +60,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_11_060332) do
     t.bigint "user_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.bigint "blog_post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["blog_post_id"], name: "index_comments_on_blog_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "blog_post_id", null: false
     t.datetime "created_at", null: false
@@ -83,6 +92,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_11_060332) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "blog_posts"
+  add_foreign_key "comments", "users"
   add_foreign_key "likes", "blog_posts"
   add_foreign_key "likes", "users"
 end
