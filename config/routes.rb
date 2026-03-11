@@ -18,5 +18,6 @@ Rails.application.routes.draw do
 
   root "blog_posts#index"
   resources :blog_posts 
+  resources :users
   get "api/blog_posts", to: "blog_posts#request_json", defaults: {format: :json}
 end

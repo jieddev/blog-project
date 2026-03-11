@@ -12,19 +12,18 @@
       <% @blog_posts.each do |blog_post| %>
 
         <div class="card mb-10" style="width: 40rem;">
-          <%# <img src="..." class="card-img-top" alt="..."> %>
           <div class="card-body">
             <h5 class="card-title "><strong><%= link_to blog_post.title, blog_post , class: "text-decoration-none"%></strong></h5>
             <p class="card-text"><%= blog_post.content %> </p>
             <p class="card-text"><%= blog_post.published_at%></p>
 
             <% if blog_post.user_id == current_user.id %>
-              <p class="card-text">By: <%= current_user.email%></p>
+              <p class="card-text">By: <%= current_user.email %></p>
+            <% elsif blog_post.user_id != current_user.id %>
+              <p class="card-text">By: <%= link_to blog_post.user.email, user_path(blog_post.user_id), class: "text-decoration-none" %></p>
             <%else %>
               <p class="card-text">By: Anonymous</p>
             <%end%>
-
-            <%# <a href="#" class="btn btn-primary">Go somewhere</a> %>
 
           </div>
         </div>
