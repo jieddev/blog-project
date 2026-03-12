@@ -4,8 +4,8 @@ export default class extends Controller {
   static targets = ["input"]
 
 
-  connect() {
-    this.element.textContent = "Hello World!"
-    // this.inputTarget.value = ""
+  clear() {
+    this.inputTarget.value = ""
+
   }
 }

@@ -44,7 +44,7 @@
                     <%= turbo_frame_tag "comments_container_#{blog_post.id}" do %>
 
                       <div class="card" style="width: 33rem;">
-                        <div class="card-body">
+                        <div class="card-body" data-controller="cancel">
                         
                           <% if blog_post.comments.any? %>
                             <% blog_post.comments.each do |comment| %>
@@ -59,13 +59,13 @@
                           <%= form_with model: [blog_post, Comment.new], local: false do |f| %>
                             <div class="d-flex flex-start w-100">
                               <div data-mdb-input-init class="form-outline w-100">
-                                <%= f.text_area :body, class: "form-control" %>
+                                <%= f.text_area :body, class: "form-control", data: { cancel_target: "input" } %>
                               </div>
                             </div>
                             <div class="float-end mt-2 pt-1">
                               <%= f.submit "Post comment", class: "btn btn-primary btn-sm", data: { mdb_button_init: "", mdb_ripple_init: "", turbo_frame: "comments_container_#{blog_post.id}" } %>
                               <%# <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-sm">Post comment</button> %>
-                              <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary btn-sm">Cancel</button>
+                              <button data-action="click->cancel#clear" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary btn-sm">Cancel</button>
                             </div>
                           <%end%>
                             
