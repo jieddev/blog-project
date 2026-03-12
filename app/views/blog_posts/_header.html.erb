@@ -1,26 +1,23 @@
-<nav class="navbar bg-light">
+<nav class="navbar bg-dark">
   <div class="container-fluid">
     <div class="navbar-brand font-bold">
-      <%= link_to "FaceBlogs", blog_posts_path, class: "text-decoration-none text-dark"%>
+      <%= link_to "FaceBlogs", blog_posts_path, class: "text-decoration-none text-light"%>
     </div>
-    <%# <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    
-    </form> %>
+        
+    </form> 
     <%= form_with url: blog_posts_path, class: "d-flex ", role: "search", method: :get do %>
-      <%= text_field_tag :q, params[:q], class: "form-control me-2", placeholder: "Search", aria: {label: "Search"} %>
-      <%= submit_tag 'Search', disable_with: 'Searching...', class: "btn btn-outline-success"%>
+      <%= text_field_tag :q, params[:q], class: "form-control me-2", style: "width: 400px", placeholder: "Search", aria: {label: "Search"} %>
+      <%= submit_tag 'Search', disable_with: 'Searching...', class: "btn btn-outline-success text-light"%>
     <%end%>
 
     <div class="d-flex align-items-center gap-2">
         <%if user_signed_in? %>
-          <%= link_to "Your Profile", edit_user_registration_path, class: "font-bold"%>
-          
+          <%= link_to "Your Profile", edit_user_registration_path, class: "font-bold text-decoration-none me-4 text-light"%>
+        
           <%= button_to "Logout",
               destroy_user_session_path,
               method: :delete,
-              class: "bg-gray-100 px-4 py-2 rounded hover:bg-gray-200" %>
+              class: "btn btn-outline-danger underline" %>
         <%end%>
     </div>
     
