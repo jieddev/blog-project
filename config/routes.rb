@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
   get "blog_posts/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -24,4 +26,6 @@ Rails.application.routes.draw do
 
   resources :users
   get "api/blog_posts", to: "blog_posts#request_json", defaults: {format: :json}
+
+
 end

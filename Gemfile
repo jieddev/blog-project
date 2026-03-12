@@ -76,3 +76,7 @@ gem "pagy", "~> 43.3"
 gem "httparty", "~> 0.24.2"
 
 gem "figaro", "~> 1.3"
+
+gem "omniauth", "~> 2.1"
+
+gem "omniauth-google-oauth2", "~> 1.2"
