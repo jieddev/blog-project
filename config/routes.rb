@@ -19,10 +19,16 @@ Rails.application.routes.draw do
   # get "blog_posts/new", to: "blog_posts#new", as: new_blog_post
 
   root "blog_posts#index"
-  resources :blog_posts do 
-    resource :like, only: [:create, :destroy]
-    resource :comments, only: [:create]
+
+  namespace :api do
+    namespace :v1 do 
+      resources :blog_posts do 
+        resource :like, only: [:create, :destroy]
+        resource :comments, only: [:create]
+      end
+    end
   end
+
 
   resources :users
   get "api/blog_posts", to: "blog_posts#request_json", defaults: {format: :json}
