@@ -1,6 +1,6 @@
 class BlogPostsController < ApplicationController
   before_action :authenticate_user!, except: [:request_json]
-  before_action :set_blog_post, except: [:index, :create, :new, :request_json]
+  before_action :set_blog_post, except: [:index, :create, :new, :request_json, :show]
   before_action :set_total_user
 
   def index
@@ -20,6 +20,8 @@ class BlogPostsController < ApplicationController
   end
 
   def show 
+    @blog_post = BlogPost.find(params[:id])
+    @comments = @blog_post.comments
   end
   
   def new 

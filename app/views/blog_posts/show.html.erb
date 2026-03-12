@@ -1,9 +1,39 @@
 <div class="width-max post-form-wrap"> 
   <h3><%= @blog_post.title %></h3>
+    <%= @blog_post.published_at%>
+              <% if @blog_post.user_id == current_user.id %>
+                <p class="card-text">By: <%= current_user.email %></p>
+              <% elsif @blog_post.user_id != current_user.id %>
+                <p class="card-text">By: <%= link_to blog_post.user.email, user_path(blog_post.user_id), class: "text-decoration-none" %></p>
+              <%elsif @blog_post.user_id.nil? %>
+                <p class="card-text">By: Anonymous</p>
+              <%end%>
+
   <%= @blog_post.content %>
 
+  <br><br>
 
+  
   <%= link_to "Back to posts", blog_posts_path%>
 
   <%= link_to "Edit post", edit_blog_post_path%>
+
+  <br><br>
+
+  <h5>Comments</h5>
+
+  <% @comments.each do |comment|%>
+    <div class="flex flex-col p-2">
+      <p>
+        <%= comment.user.email %>
+      </p>
+      <p>
+        <%= comment.body %>
+      </p>
+    </div>
+  <%end%>
+
+  
+
+
 </div>
