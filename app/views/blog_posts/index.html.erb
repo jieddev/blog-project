@@ -41,34 +41,38 @@
                   </div>
                       
                   <div data-toggle-target="container" class="hidden">
-                    <div class="card" style="width: 33rem;">
-                      <div class="card-body">
-                      
-                        <% if blog_post.comments.any? %>
-                          <% blog_post.comments.each do |comment| %>
-                              <p class="card-text font-bold"> <%= comment.user.email %></p>
-                              <p class="card-text"> <%= comment.body %></p>
-                    
-                          <%end%>
-                        <% else %>
-                            <p class="card-text"> No Comments yet.</p>
-                        <%end%>
+                    <%= turbo_frame_tag "comments_container_#{blog_post.id}" do %>
 
-                        <%= form_with model: [blog_post, Comment.new], local: false do |f| %>
-                          <div class="d-flex flex-start w-100">
-                            <div data-mdb-input-init class="form-outline w-100">
-                              <%= f.text_area :body, class: "form-control" %>
+                      <div class="card" style="width: 33rem;">
+                        <div class="card-body">
+                        
+                          <% if blog_post.comments.any? %>
+                            <% blog_post.comments.each do |comment| %>
+                                <p class="card-text font-bold"> <%= comment.user.email %></p>
+                                <p class="card-text"> <%= comment.body %></p>
+                      
+                            <%end%>
+                          <% else %>
+                              <p class="card-text"> No Comments yet.</p>
+                          <%end%>
+
+                          <%= form_with model: [blog_post, Comment.new], local: false do |f| %>
+                            <div class="d-flex flex-start w-100">
+                              <div data-mdb-input-init class="form-outline w-100">
+                                <%= f.text_area :body, class: "form-control" %>
+                              </div>
                             </div>
-                          </div>
-                          <div class="float-end mt-2 pt-1">
-                            <%= f.submit "Post comment", class: "btn btn-primary btn-sm", data: { mdb_button_init: "", mdb_ripple_init: "" } %>
-                            <%# <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-sm">Post comment</button> %>
-                            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary btn-sm">Cancel</button>
-                          </div>
-                        <%end%>
-                          
-                          <br>      
+                            <div class="float-end mt-2 pt-1">
+                              <%= f.submit "Post comment", class: "btn btn-primary btn-sm", data: { mdb_button_init: "", mdb_ripple_init: "", turbo_frame: "comments_container_#{blog_post.id}" } %>
+                              <%# <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-sm">Post comment</button> %>
+                              <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary btn-sm">Cancel</button>
+                            </div>
+                          <%end%>
+                            
+                            <br>      
                       </div>
+                    
+                    <%end%>
                     </div>
                   </div>
                 
