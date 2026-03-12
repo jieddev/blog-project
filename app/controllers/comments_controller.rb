@@ -5,12 +5,20 @@ class CommentsController < ApplicationController
   end
 
   def create 
-    @comment = @blog_post.comments.create(body: params[:body])
+    @comment = @blog_post.comments.build(comment_params)
     @comment.user = current_user
 
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_to blog_posts_path }
+    if @comment.save   
+      # respond_to do |format|
+      #   format.turbo_stream
+      #   format.html { redirect_to blog_posts_path, notice: "Comment posted successfully"}
+      # end
+      redirect_to blog_posts_path
+    else 
+      respond_to do |format|
+        format.html { redirect_to blog_posts_path }
+      end
+
     end
 
   end
@@ -24,8 +32,8 @@ class CommentsController < ApplicationController
       @blog_post = BlogPost.find(params[:blog_post_id])
     end
 
-    def comments_param 
-      params.require(:comments).permit(:body)
+    def comment_params
+      params.require(:comment).permit(:body)
     end
 
 

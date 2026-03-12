@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   root "blog_posts#index"
   resources :blog_posts do 
     resource :like, only: [:create, :destroy]
+    resource :comments, only: [:create]
   end
 
   resources :users
